@@ -11,14 +11,30 @@ const ProgressiveImage = (props: IImageProps) => {
   const [loaded, setLoaded] = useState(false);
 
   // 고화질 이미지 로드 함수
-  function loadHighResImage() {
+  const loadHighResImage = () => {
     const highResImg = new Image();
     highResImg.src = props.src;
     highResImg.onload = () => {
       setImageSrc(props.src);
       setLoaded(true);
     };
-  }
+  };
+
+  const compressorOptions = {
+    quality: 0.1, // 저화질 설정
+    success(result: Blob) {
+      const reader = new FileReader();
+      reader.readAsDataURL(result);
+      reader.onloadend = () => {
+        if (reader.result) setImageSrc(reader.result.toString());
+        loadHighResImage();
+      };
+    },
+    error() {
+      console.error("Progressive Loading Fail In ProgressiveImage Element");
+      loadHighResImage();
+    },
+  };
 
   useEffect(() => {
     fetch(props.src)
@@ -28,21 +44,7 @@ const ProgressiveImage = (props: IImageProps) => {
 
         if (fileSize > 100) {
           // 파일 크기가 100KB 이상이면 Progressive Loading 적용
-          new Compressor(blob, {
-            quality: 0.1, // 저화질 설정
-            success(result) {
-              const reader = new FileReader();
-              reader.readAsDataURL(result);
-              reader.onloadend = () => {
-                if (reader.result) setImageSrc(reader.result.toString());
-                loadHighResImage();
-              };
-            },
-            error() {
-              console.error("Progressive Loading Fail In ProgressiveImage Element");
-              loadHighResImage();
-            },
-          });
+          new Compressor(blob, compressorOptions);
         } else {
           // 파일 크기가 100KB 미만이면 바로 원본 이미지 사용
           loadHighResImage();
