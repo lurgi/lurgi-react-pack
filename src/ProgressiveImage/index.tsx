@@ -1,7 +1,7 @@
-import React from "react";
+import { ImgHTMLAttributes } from "react";
 
-const index = () => {
-  return <div>index</div>;
+const Image = (props: ImgHTMLAttributes<HTMLImageElement>) => {
+  return <img {...props} />;
 };
 
-export default index;
+export default Image;
