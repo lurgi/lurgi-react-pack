@@ -1,7 +1,8 @@
 import Compressor from "compressorjs";
 import { ImgHTMLAttributes, useEffect, useState } from "react";
+import styles from "./index.module.css";
 
-interface IImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+export interface IImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
 }
 
@@ -38,7 +39,7 @@ const ProgressiveImage = (props: IImageProps) => {
               };
             },
             error() {
-              console.error("Progressive Loading Fail In Image Element");
+              console.error("Progressive Loading Fail In ProgressiveImage Element");
               loadHighResImage();
             },
           });
@@ -50,14 +51,21 @@ const ProgressiveImage = (props: IImageProps) => {
   }, [props.src]);
 
   return (
-    <img
-      {...props}
-      src={imageSrc}
-      style={{
-        ...props.style,
-        filter: loaded ? "none" : "blur(5px)",
-      }}
-    />
+    <div
+      className={`${styles.container} ${!imageSrc || !loaded ? styles.pulse : ""}`}
+      style={{ width: props.style?.width, height: props.style?.height }}
+    >
+      {imageSrc ? (
+        <img
+          {...props}
+          src={imageSrc}
+          style={{
+            ...props.style,
+            filter: loaded ? "none" : "blur(5px)",
+          }}
+        />
+      ) : null}
+    </div>
   );
 };
 

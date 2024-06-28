@@ -1,0 +1,21 @@
+/* Image.module.css */
+.container {
+  display: inline-block;
+  background-color: transparent;
+  animation: none;
+  background-color: #f0f0f0;
+}
+
+.pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

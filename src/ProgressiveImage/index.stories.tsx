@@ -24,6 +24,11 @@ export const Loading: Stroy = {
   name: "Progressive Loading을 적용합니다.",
   args: {
     src: HigherImage,
+    style: {
+      width: "200px",
+      height: "300px",
+      objectFit: "cover",
+    },
   },
 };
 
@@ -31,5 +36,17 @@ export const NoLoading: Stroy = {
   name: "100KB보다 작은 이미지는 Progressive Loading을 적용하지 않습니다.",
   args: {
     src: LowerImage,
+  },
+};
+
+export const SkeletonLoading: Stroy = {
+  name: "Skeleton Loading을 적용합니다. width, height 값을 지정한 경우에만 나타납니다.",
+  args: {
+    src: LowerImage,
+    style: {
+      width: "200px",
+      height: "300px",
+      objectFit: "cover",
+    },
   },
 };
