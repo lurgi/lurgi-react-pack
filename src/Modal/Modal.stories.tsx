@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Modal from "./";
-import { IModalProps } from "./BaseModal";
+import { IModalProps } from "./components/BaseModal";
 
 const TestModal: React.FC<IModalProps> = (props) => {
   const modal = Modal.useModal();
@@ -21,7 +21,7 @@ const meta = {
   argTypes: {
     isOpen: { description: "첫 렌더링시 모달을 연상태로 렌더링 하고 싶다면, 이 값을 true값으로 설정하세요." },
     style: { description: "모달의 스타일을 지정할 수 있습니다." },
-    overlayColor: { description: "모달창 바깥 배경의 색상을 지정합니다." },
+    backdropColor: { description: "모달창 바깥 배경의 색상을 지정합니다." },
   },
 } satisfies Meta<typeof Modal>;
 
@@ -45,6 +45,6 @@ export const StyledModal: Stroy = {
       background: "red",
       border: "5px solid green",
     },
-    overlayColor: "blue",
+    backdropColor: "blue",
   },
 };
