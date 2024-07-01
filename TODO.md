@@ -10,9 +10,7 @@
 
 # Modal
 
-1. [ ] props로 isOpen, style을 받습니다.
-2. [ ] 합성 컴포넌트 패턴을 사용하여 다음과 같은 컴포넌트를 export합니다.
-   - [ ] Modal.Header
-   - [ ] Modal.Main
-   - [ ] Modal.Footer
-   - [ ] Modal.ToggleBtn
+1. [x] props로 isOpen, style을 받습니다.
+2. [x] 합성 컴포넌트 패턴을 사용하여 다음과 같은 컴포넌트를 export합니다.
+   - [x] Modal.ToggleBtn
+     - 토글 버튼은 useModal()의 open, close를 사용하여 모달을 켜고 끌 수 있습니다.
