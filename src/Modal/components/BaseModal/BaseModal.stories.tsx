@@ -1,9 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Modal from "./";
-import { IModalProps } from "./components/BaseModal";
+import Modal from "../../";
+import { useModal } from "../../";
+import { IModalProps } from ".";
 
-const TestModal: React.FC<IModalProps> = (props) => {
-  const modal = Modal.useModal();
+const TestModal = (props: IModalProps) => {
+  const modal = useModal();
 
   return (
     <>
