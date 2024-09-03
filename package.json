@@ -1,8 +1,13 @@
 {
   "name": "lurgi-react-pack",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "types": "dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -39,6 +44,7 @@
     "eslint-plugin-storybook": "^0.8.0",
     "storybook": "^8.1.11",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^4.1.0"
   }
 }
